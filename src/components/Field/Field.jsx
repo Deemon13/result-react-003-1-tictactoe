@@ -10,8 +10,16 @@ export const Field = ({ field, updateField, player, togglePlayer }) => {
 						key={idx}
 						type="button"
 						onClick={() => {
+							updateField(
+								field.map((findItem, findIndex) => {
+									if (findIndex === idx) {
+										return (findItem = player);
+									} else {
+										return findItem;
+									}
+								}),
+							);
 							togglePlayer((player = player === 'X' ? '0' : 'X'));
-							updateField([...field, field[idx]=player]);
 						}}
 					>
 						{item}

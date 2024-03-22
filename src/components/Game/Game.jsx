@@ -4,6 +4,7 @@ import { GameLayout } from '../../components';
 import { field as fieldArr } from '../../data/field';
 
 export const Game = () => {
+	console.log(fieldArr);
 	const [currentPlayer, setCurrentPlayer] = useState('X');
 	const [isGameEnded, setIsGameEnded] = useState(false);
 	const [isDraw, setIsDraw] = useState(false);
