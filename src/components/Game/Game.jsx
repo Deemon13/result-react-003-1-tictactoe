@@ -1,12 +1,12 @@
-import { Field, Information } from '../../components';
-import styles from './game.module.css';
+import { useState } from 'react';
+import { GameLayout } from '../../components';
+
+import { field as fieldArr } from '../../data/field';
 
 export const Game = () => {
-	return (
-		<div className={styles.game}>
-			BEGIN
-			<Information />
-			<Field />
-		</div>
-	);
+	const [currentPlayer, setCurrentPlayer] = useState('X');
+	const [isGameEnded, setIsGameEnded] = useState(false);
+	const [isDraw, setIsDraw] = useState(false);
+	const [field, setField] = useState(fieldArr);
+	return <GameLayout field={field} player={currentPlayer} togglePlayer={setCurrentPlayer} updateField={setField} />;
 };
