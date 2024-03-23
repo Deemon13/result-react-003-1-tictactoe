@@ -1,9 +1,9 @@
-export const InformationLayout = ({ status, player }) => {
+import styles from './informationLayout.module.css';
+
+export const InformationLayout = ({ status }) => {
 	return (
-		<div>
-			Information
-			<p>Current Player: {player}</p>
-			<p>{status}</p>
+		<div className={styles.container}>
+			<p className={`${styles.status}`}>{status}</p>
 		</div>
 	);
 };

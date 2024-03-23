@@ -1,0 +1,31 @@
+.container {
+	width: 350px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	padding: 15px;
+	border-radius: 15px;
+	border: 1px solid #00ff00;
+
+	text-align: center;
+}
+
+.status {
+	margin-top: 0;
+	margin-bottom: 0;
+
+	font-size: 24px;
+	text-transform: uppercase;
+	color: #ffffff;
+}
+
+.status-green {
+	color: #00ff00;
+}
+
+.status-red {
+	color: #ff0000;
+}
+
+.status-white {
+	color: #ffffff;
+}

@@ -70,7 +70,6 @@ export const Game = () => {
 			status={status}
 			field={field}
 			handleClick={handleClickOnFieldCell}
-			player={currentPlayer}
 			resetGame={handleResetGame}
 		/>
 	);
