@@ -10,7 +10,6 @@ export const Game = () => {
 	const [isDraw, setIsDraw] = useState(false);
 	const [field, setField] = useState(fieldArr);
 
-	// Click on field cell
 	function handleClickOnFieldCell(id) {
 		if (field[id] === '' && !isGameEnded) {
 			setField(
@@ -27,7 +26,6 @@ export const Game = () => {
 	}
 
 	function setWinner() {
-		console.log('определяем наличие победителя...');
 		return (
 			WIN_PATTERNS.some(el => el.every(item => field[item] === 'X')) ||
 			WIN_PATTERNS.some(el => el.every(item => field[item] === '0'))
@@ -35,19 +33,12 @@ export const Game = () => {
 	}
 
 	if (setWinner() && !isGameEnded) {
-		console.log('if', setWinner());
-		// console.log(isGameEnded);
 		setIsGameEnded(true);
-		// console.log(isGameEnded);
-		console.log('есть победитель!');
 		setCurrentPlayer((currentPlayer = currentPlayer === 'X' ? '0' : 'X'));
 	} else if (!isDraw && field.every(cell => cell !== '')) {
 		setIsDraw(true);
-		console.log('else', setWinner());
-		console.log('нет победителя!');
 	}
 
-	// set status
 	let status;
 	if (isDraw) {
 		status = 'Ничья';
@@ -57,7 +48,6 @@ export const Game = () => {
 		status = `Ходит: ${currentPlayer}`;
 	}
 
-	// Reset game
 	function handleResetGame() {
 		setCurrentPlayer('X');
 		setIsDraw(false);

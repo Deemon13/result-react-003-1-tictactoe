@@ -7,8 +7,12 @@ export const GameLayout = ({ status, field, handleClick, resetGame }) => {
 			<Information status={status} />
 			<Field field={field} handleClick={handleClick} />
 			{field.some(el => el !== '') && (
-				<button type="button" onClick={() => resetGame()}>
-					Restart game
+				<button
+					type="button"
+					onClick={() => resetGame()}
+					className={styles.gameBtnReset}
+				>
+					Начать заново
 				</button>
 			)}
 		</div>
