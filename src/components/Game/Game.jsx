@@ -12,32 +12,32 @@ export const Game = () => {
 	const [field, setField] = useState(fieldArr);
 
 	function handleClickOnFieldCell(id) {
-		if (field[id] === '' && !isGameEnded) {
-			setField(
-				field.map((findItem, findIndex) => {
-					if (findIndex === id) {
-						return (findItem = currentPlayer);
-					} else {
-						return findItem;
-					}
-				}),
-			);
-
-			setCurrentPlayer((currentPlayer = currentPlayer === 'X' ? '0' : 'X'));
+		if (isGameEnded) {
+			return null;
 		}
+
+		const newFields = field.slice();
+
+		if (field[id] === '' && !isGameEnded) {
+			newFields[id] = currentPlayer;
+			setField(newFields);
+		} else {
+			return null;
+		}
+
+		if (setWinner(newFields, currentPlayer)) {
+			setIsGameEnded(true);
+			return null;
+		}
+
+		setCurrentPlayer(prevState => (prevState === 'X' ? '0' : 'X'));
 	}
 
-	function setWinner(fieldCells) {
-		return (
-			WIN_PATTERNS.some(el => el.every(item => fieldCells[item] === 'X')) ||
-			WIN_PATTERNS.some(el => el.every(item => fieldCells[item] === '0'))
-		);
+	function setWinner(fieldCells, player) {
+		return WIN_PATTERNS.some(el => el.every(item => fieldCells[item] === player));
 	}
 
-	if (setWinner(field) && !isGameEnded) {
-		setIsGameEnded(true);
-		setCurrentPlayer((currentPlayer = currentPlayer === 'X' ? '0' : 'X'));
-	} else if (!isDraw && field.every(cell => cell !== '') && !isGameEnded) {
+	if (field.every(cell => cell !== '') && !isDraw && !isGameEnded) {
 		setIsDraw(true);
 	}
 
