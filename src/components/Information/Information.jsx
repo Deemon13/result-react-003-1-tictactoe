@@ -1,11 +1,5 @@
-import PropTypes from 'prop-types';
-
 import { InformationLayout } from '../../components';
 
-export const Information = ({ status }) => {
-	return <InformationLayout status={status} />;
-};
-
-Information.propTypes = {
-	status: PropTypes.string,
+export const Information = props => {
+	return <InformationLayout {...props} />;
 };

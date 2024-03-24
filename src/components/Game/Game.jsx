@@ -22,18 +22,19 @@ export const Game = () => {
 					}
 				}),
 			);
+
 			setCurrentPlayer((currentPlayer = currentPlayer === 'X' ? '0' : 'X'));
 		}
 	}
 
-	function setWinner() {
+	function setWinner(fieldCells) {
 		return (
-			WIN_PATTERNS.some(el => el.every(item => field[item] === 'X')) ||
-			WIN_PATTERNS.some(el => el.every(item => field[item] === '0'))
+			WIN_PATTERNS.some(el => el.every(item => fieldCells[item] === 'X')) ||
+			WIN_PATTERNS.some(el => el.every(item => fieldCells[item] === '0'))
 		);
 	}
 
-	if (setWinner() && !isGameEnded) {
+	if (setWinner(field) && !isGameEnded) {
 		setIsGameEnded(true);
 		setCurrentPlayer((currentPlayer = currentPlayer === 'X' ? '0' : 'X'));
 	} else if (!isDraw && field.every(cell => cell !== '') && !isGameEnded) {
@@ -59,6 +60,7 @@ export const Game = () => {
 	return (
 		<GameLayout
 			status={status}
+			player={currentPlayer}
 			field={field}
 			handleClick={handleClickOnFieldCell}
 			resetGame={handleResetGame}

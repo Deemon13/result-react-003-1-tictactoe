@@ -4,10 +4,10 @@ import { Field, Information } from '../../components';
 
 import styles from './gameLayout.module.css';
 
-export const GameLayout = ({ status, field, handleClick, resetGame }) => {
+export const GameLayout = ({ status, player, field, handleClick, resetGame }) => {
 	return (
 		<div className={styles.gameLayout}>
-			<Information status={status} />
+			<Information status={status} player={player} />
 			<Field field={field} handleClick={handleClick} />
 			{field.some(el => el !== '') && (
 				<button
@@ -25,6 +25,7 @@ export const GameLayout = ({ status, field, handleClick, resetGame }) => {
 GameLayout.propTypes = {
 	status: PropTypes.string,
 	field: PropTypes.array,
+	player: PropTypes.string,
 	handleClick: PropTypes.func,
 	resetGame: PropTypes.func,
 };
