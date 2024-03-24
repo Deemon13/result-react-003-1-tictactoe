@@ -1,4 +1,7 @@
+import PropTypes from 'prop-types';
+
 import { Field, Information } from '../../components';
+
 import styles from './gameLayout.module.css';
 
 export const GameLayout = ({ status, field, handleClick, resetGame }) => {
@@ -17,4 +20,11 @@ export const GameLayout = ({ status, field, handleClick, resetGame }) => {
 			)}
 		</div>
 	);
+};
+
+GameLayout.propTypes = {
+	status: PropTypes.string,
+	field: PropTypes.array,
+	handleClick: PropTypes.func,
+	resetGame: PropTypes.func,
 };

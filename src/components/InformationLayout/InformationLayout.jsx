@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './informationLayout.module.css';
 
 export const InformationLayout = ({ status }) => {
@@ -6,4 +8,8 @@ export const InformationLayout = ({ status }) => {
 			<p className={`${styles.status}`}>{status}</p>
 		</div>
 	);
+};
+
+InformationLayout.propTypes = {
+	status: PropTypes.string,
 };

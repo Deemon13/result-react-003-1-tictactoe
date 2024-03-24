@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { GameLayout } from '../../components';
 
 import { field as fieldArr } from '../../data/field';
@@ -35,7 +36,7 @@ export const Game = () => {
 	if (setWinner() && !isGameEnded) {
 		setIsGameEnded(true);
 		setCurrentPlayer((currentPlayer = currentPlayer === 'X' ? '0' : 'X'));
-	} else if (!isDraw && field.every(cell => cell !== '')) {
+	} else if (!isDraw && field.every(cell => cell !== '') && !isGameEnded) {
 		setIsDraw(true);
 	}
 
