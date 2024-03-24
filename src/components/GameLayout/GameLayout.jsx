@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Field, Information } from '../../components';
+import { Field, Information, Signature } from '../../components';
 
 import styles from './gameLayout.module.css';
 
@@ -18,6 +18,7 @@ export const GameLayout = ({ status, player, field, handleClick, resetGame }) =>
 					Начать заново
 				</button>
 			)}
+			<Signature />
 		</div>
 	);
 };

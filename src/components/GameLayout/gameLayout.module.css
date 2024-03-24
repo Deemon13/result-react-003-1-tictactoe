@@ -1,20 +1,26 @@
 .gameLayout {
+	width: 350px;
+	margin: 0 auto;
+	padding: 15px;
+	border-radius: 15px;
+	border: 1px solid #009a00;
 	text-align: center;
 }
 
 .gameBtnReset {
 	display: block;
-	width: 350px;
+	width: 100%;
 	margin: 0 auto;
 	padding: 15px;
 	border-radius: 15px;
 	border: 1px solid #00ff00;
 
 	text-transform: uppercase;
+	font-size: 24px;
 	color: #00ff00;
 	background-color: transparent;
 
-	transition: background-color 0.3s;
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .gameBtnReset:hover {
