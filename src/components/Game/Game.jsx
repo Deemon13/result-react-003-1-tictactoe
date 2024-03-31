@@ -11,7 +11,7 @@ export const Game = () => {
 	const [isDraw, setIsDraw] = useState(false);
 	const [field, setField] = useState(fieldArr);
 
-	// const [freeCells, setFreeCells] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+	const [freeCells, setFreeCells] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
 	const newFields = field.slice();
 
@@ -23,8 +23,8 @@ export const Game = () => {
 		if (field[id] === '' && !isGameEnded) {
 			newFields[id] = currentPlayer;
 			setField(newFields);
-			// const newFreeCells = getFreeCells(freeCells, id);
-			// setFreeCells(newFreeCells);
+			const newFreeCells = getFreeCells(freeCells, id);
+			setFreeCells(newFreeCells);
 		} else {
 			return null;
 		}
@@ -41,23 +41,36 @@ export const Game = () => {
 		return WIN_PATTERNS.some(el => el.every(item => fieldCells[item] === player));
 	}
 
-	// function getFreeCells(arr, idx) {
-	// 	const newArr = arr.filter(item => item !== idx);
-	// 	return newArr;
-	// }
+	function getFreeCells(arr, idx) {
+		const newArr = arr.filter(item => item !== idx);
+		return newArr;
+	}
 
-	// function getRandomNumber(min, max) {
-	// 	return Math.round(Math.random() * (max - min) + min);
-	// }
+	function getRandomNumber(min, max) {
+		return Math.round(Math.random() * (max - min) + min);
+	}
 
-	// if (currentPlayer === '0') {
-	// 	const freeCell = freeCells[getRandomNumber(0, freeCells.length - 1)];
-	// 	newFields[freeCell] = currentPlayer;
-	// 	setField(newFields);
-	// 	const newFreeCells = getFreeCells(freeCells, freeCell);
-	// 	setFreeCells(newFreeCells);
-	// 	setCurrentPlayer(prevState => (prevState === 'X' ? '0' : 'X'));
-	// }
+	function pcPlay() {
+		if (isGameEnded) {
+			return null;
+		}
+
+		const freeCell = freeCells[getRandomNumber(0, freeCells.length - 1)];
+		newFields[freeCell] = currentPlayer;
+		setField(newFields);
+		const newFreeCells = getFreeCells(freeCells, freeCell);
+		setFreeCells(newFreeCells);
+
+		if (setWinner(newFields, currentPlayer)) {
+			setIsGameEnded(true);
+			return null;
+		}
+		setCurrentPlayer(prevState => (prevState === 'X' ? '0' : 'X'));
+	}
+
+	if (currentPlayer === '0') {
+		pcPlay();
+	}
 
 	if (field.every(cell => cell !== '') && !isDraw && !isGameEnded) {
 		setIsDraw(true);
@@ -77,7 +90,7 @@ export const Game = () => {
 		setIsDraw(false);
 		setIsGameEnded(false);
 		setField([...fieldArr]);
-		// setFreeCells([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+		setFreeCells([0, 1, 2, 3, 4, 5, 6, 7, 8]);
 	}
 
 	return (
