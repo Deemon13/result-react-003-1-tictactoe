@@ -2,7 +2,8 @@
 	width: 100%;
 	margin: 0 auto;
 	margin-bottom: 20px;
-	padding: 10px;
+	padding: 10px 10px 20px;
+
 	border-radius: 15px;
 	border: 1px solid #00ff00;
 
@@ -25,20 +26,19 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 5px;
 }
 
 .fieldCell {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* flex-basis: calc((100% - 20px) / 3); */
-	width: 70px;
-	height: 70px;
+	width: 80px;
+	height: 80px;
 
 	font-size: 46px;
-	/* line-height: 1; */
 	font-weight: 600;
+	border: 1px solid #00ff00;
 }
 
 .fieldCell-green {
@@ -47,8 +47,4 @@
 
 .fieldCell-red {
 	color: #ff0000;
-}
-
-.fieldCell:active {
-	border-radius: 0;
 }

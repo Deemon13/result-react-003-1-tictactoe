@@ -9,9 +9,8 @@ export const FieldLayout = ({ field, handleClick }) => {
 			<div className={styles.field}>
 				{field.map((item, idx) => {
 					return (
-						<button
+						<a
 							key={idx}
-							type="button"
 							onClick={() => handleClick(idx)}
 							className={`${styles.fieldCell} ${
 								item === 'X'
@@ -20,7 +19,7 @@ export const FieldLayout = ({ field, handleClick }) => {
 							}`}
 						>
 							{item}
-						</button>
+						</a>
 					);
 				})}
 			</div>
